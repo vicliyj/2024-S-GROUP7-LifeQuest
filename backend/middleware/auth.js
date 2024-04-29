@@ -14,24 +14,27 @@ module.exports.userVerification = (req, res, next) => {
     const token = req.cookies.login
     if(!token){
         //No token? Bad. Go back to login.
-        return res.status(401).json({ message: 'Not Authorized' }); 
+        return res.status(401).json({ message: 'Not Authorized (No Token)' }); 
     } 
     else{
         jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
             if(err){
                 //Bad token? Bad, go back to login.
-                return res.status(401).json({ message: 'Not Authorized' }); 
+                return res.status(401).json({ message: 'Not Authorized (Bad Token)' }); 
             }
             else{
                 //Okay this is a good token, time to find the user!
                 const user = await User.findById(data.id)
                 if(user){
                     //You pass! Continue along.
+                    // adding user to the request 
+                    // to be used in the next function
+                    req.user = user;
                     next();
                 }
                 else{
                     //No valid user found? Bad, go back to login.
-                    return res.status(401).json({ message: 'Not Authorized' }); 
+                    return res.status(401).json({ message: 'Not Authorized (No user found)' }); 
                 }
             }
         })

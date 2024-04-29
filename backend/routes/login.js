@@ -4,12 +4,7 @@ var router = express.Router();
 const bcrypt = require("bcryptjs");
 const { createJWT } = require("../util/jwt.js");
 
-router.get('/test', (req, res) => {
-    console.log("Hello World")
-    res.send('Response')
-})
-
-//The 'login' function. This
+//The 'login' function. This logs in a user
 router.post('/submit', async (req, res, next) => {
     try {
         //Get the request values, the email and plaintext password
@@ -42,8 +37,14 @@ router.post('/submit', async (req, res, next) => {
             httpOnly: false,
         });
 
-        //We signed in successfully! Return status 200.
-        res.status(200).json({ message: "Signed in successfully"});
+        //We signed in successfully!
+        
+        //Check if the quiz needs to be done
+        if(!user.completedQuiz)
+            return res.status(200).json({ message: "Signed in successfully", doQuiz: true });
+
+        //Quiz is already complete, go to home page
+        return res.status(200).json({ message: "Signed in successfully", doQuiz: false });
 
     } catch (error) {
         res.status(500).json({ message: error.message });
