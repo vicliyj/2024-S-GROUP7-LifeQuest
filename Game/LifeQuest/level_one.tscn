@@ -1,22 +1,30 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccuoxmewdujb4"]
+[gd_scene load_steps=13 format=3 uid="uid://ccuoxmewdujb4"]
 
 [ext_resource type="Script" path="res://level_one.gd" id="1_cocsj"]
 [ext_resource type="Script" path="res://Scripts/Inventory GUI/UserInterface.gd" id="3_xq1jt"]
 [ext_resource type="PackedScene" uid="uid://bqwh0ar8cqyro" path="res://inventory.tscn" id="4_kvqbx"]
 [ext_resource type="PackedScene" uid="uid://dlefoq5yaab4c" path="res://Scripts/Bottom GUI Buttons/bottom_gui.tscn" id="5_3v875"]
-[ext_resource type="PackedScene" uid="uid://ccwd1ftqobgn8" path="res://in_game_menu.tscn" id="5_o2m2h"]
 [ext_resource type="PackedScene" uid="uid://dc481yfgddn04" path="res://Scripts/Quest/Quest Menu.tscn" id="6_tme8m"]
 [ext_resource type="Texture2D" uid="uid://0600xo15qfis" path="res://Sprites/Battle scene horizontal.png" id="7_ltoce"]
+[ext_resource type="PackedScene" uid="uid://cxqo5blx4o71p" path="res://Sprites/Enemys/Slime/Slime.tscn" id="8_lvcps"]
+[ext_resource type="PackedScene" uid="uid://l4ulw4k528e1" path="res://Sprites/Character/backcharacter.tscn" id="9_wj17n"]
+[ext_resource type="PackedScene" uid="uid://cgi4pbiitaqnl" path="res://post_battle.tscn" id="10_1uy7y"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tfrh8"]
 texture = ExtResource("7_ltoce")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ese3"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_7q1nl"]
+font_size = 25
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_cocsj")
 
 [node name="Panel" type="Panel" parent="."]
 clip_contents = true
-offset_right = 1147.0
+offset_right = 1181.0
 offset_bottom = 647.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_tfrh8")
 
@@ -26,6 +34,9 @@ offset_top = 2.0
 offset_right = 265.0
 offset_bottom = 74.0
 text = "LEVEL 1"
+label_settings = SubResource("LabelSettings_7ese3")
+
+[node name="PostBattle" parent="." instance=ExtResource("10_1uy7y")]
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 script = ExtResource("3_xq1jt")
@@ -40,8 +51,16 @@ visible = false
 position = Vector2(210, 144)
 scale = Vector2(0.45, 0.45)
 
-[node name="Menu" parent="." instance=ExtResource("5_o2m2h")]
-offset_left = 1088.0
-offset_top = 35.0
-offset_right = 1128.0
-offset_bottom = 71.0
+[node name="Slime" parent="." instance=ExtResource("8_lvcps")]
+position = Vector2(635, 40)
+
+[node name="Character" parent="." instance=ExtResource("9_wj17n")]
+position = Vector2(241, 172)
+
+[node name="InProgress" type="Label" parent="."]
+offset_left = 445.0
+offset_top = 58.0
+offset_right = 725.0
+offset_bottom = 121.0
+text = "BATTLE IN PROGRESS..."
+label_settings = SubResource("LabelSettings_7q1nl")
