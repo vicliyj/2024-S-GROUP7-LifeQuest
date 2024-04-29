@@ -36,6 +36,7 @@ describe('Home', () => {
   it('renders without crashing', () => {
     render(<Home />);
     expect(screen.getByTestId('navigation-panel')).toBeInTheDocument();
+    expect(screen.getByTestId('top-panel')).toBeInTheDocument();
     expect(screen.getByTestId('form-triangle')).toBeInTheDocument();
     expect(screen.getByText('LifeQuest')).toBeInTheDocument();
   });

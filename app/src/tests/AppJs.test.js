@@ -59,7 +59,7 @@ describe("App Routing", () => {
         <App />
       </MemoryRouter>
     );
-    expect(screen.getByText("Start Quiz")).toBeInTheDocument();
+    expect(screen.getByText("Strongly Agree")).toBeInTheDocument();
   });
 
 });

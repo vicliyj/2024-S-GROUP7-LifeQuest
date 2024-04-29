@@ -3,6 +3,7 @@ extends Control
 var menuShown = false
 
 func _ready():
+	$Menu.visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 # When "Levels" button is pressed:
@@ -20,7 +21,7 @@ func _on_quit_pressed():
 	get_tree().quit() # Quit the game
 
 # When "Settings" button is pressed:
-func on_pressed():
+func _on_settings_pressed():
 	if menuShown == false:
 		get_tree().paused = true
 		$Menu.visible = true

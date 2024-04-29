@@ -88,5 +88,5 @@
 
 .darkMode {
 	background-color: var(--background-color-dark); 
-	background-image: url('../../../public/blackmarblebackground.jpg');
+	color: var(--text-color-dark);
 }

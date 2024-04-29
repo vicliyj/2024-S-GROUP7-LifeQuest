@@ -244,11 +244,4 @@ offset_top = -688.0
 offset_right = 396.0
 offset_bottom = -666.0
 
-[node name="MoveArea" type="Panel" parent="."]
-modulate = Color(1, 1, 1, 0)
-offset_left = 56.0
-offset_top = -696.0
-offset_right = 338.0
-offset_bottom = -674.0
-
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

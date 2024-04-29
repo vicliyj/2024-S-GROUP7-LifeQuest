@@ -30,10 +30,6 @@ describe('QuizPage', () => {
   it('calculates and displays user scores at the end of the quiz', async () => {
     const { getByText, queryByText } = render(<QuizPage />);
     
-    // Click the Start Quiz button
-    const startQuizButton = getByText('Start Quiz');
-    fireEvent.click(startQuizButton);
-
     // Simulate answering all questions
     const nextButton = getByText('Next');
     let finishButton = queryByText('Finish');
@@ -56,4 +52,3 @@ describe('QuizPage', () => {
     // expect(setAnswerSelected).toHaveBeenCalledWith(true);
   });
 });
-

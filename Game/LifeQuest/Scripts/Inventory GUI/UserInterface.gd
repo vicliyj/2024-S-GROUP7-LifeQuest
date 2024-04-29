@@ -13,7 +13,7 @@ func _ready():
 	else:
 		$QuestInterface.add_quests()
 		#print(PlayerInventory.inventory)
-		print("loadgame not found")
+		#print("loadgame")
 
 func save_game_data():
 	var Saved = Save.new()
@@ -44,14 +44,6 @@ func process_quest_press():
 	initialized_inventory = true
 	save_game_data()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-
-
-func savegame():
-	$Inventory.initializeinventory(initialized_inventory)
-	initialized_inventory = true
-	print("savegame")
-	save_game_data()
-	
 func _process(delta):
 	pass
 	#var Saved = Save.new()
