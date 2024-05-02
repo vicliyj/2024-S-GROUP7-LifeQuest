@@ -1,13 +1,16 @@
 extends HBoxContainer
 
 var user_interface
-# Called when the node enters the scene tree for the first time.
+var settingsShown = false
+# Called when the n	ode enters the scene tree for the first time.
 func _ready():
 	user_interface= find_node_by_name(get_tree().get_root(),"UserInterface")
 	setName()
 	setLevel()
 	setCash()
 	setExp()
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	#$Menu/InGameMenu.visible = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	setExp()
@@ -72,4 +75,12 @@ func _on_shop_pressed():
 
 
 func _on_setting_pressed():
-	pass # Replace with function body.
+	if settingsShown == false:
+		get_tree().paused = true
+		#$Menu/InGameMenu.visible = true
+		settingsShown = true
+	else:
+		get_tree().paused = false
+		#$Menu/InGameMenu.visible = false
+		settingsShown = false
+		

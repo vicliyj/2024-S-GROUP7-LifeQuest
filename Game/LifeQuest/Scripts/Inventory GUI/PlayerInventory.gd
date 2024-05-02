@@ -30,7 +30,7 @@ var inventory ={
 @export var CharCash: int = 101
 
 
-@export var playerHealthStat = 20 # Temporary health value. Pull value from where player character statistics are stored.
+@export var playerHealthStat = 100 # Temporary health value. Pull value from where player character statistics are stored.
 @export var playerAttackStat = 4 # Temporary attack value. Pull value from where player character statistics are stored.
 
 

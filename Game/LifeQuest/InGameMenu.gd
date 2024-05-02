@@ -21,7 +21,7 @@ func _on_quit_pressed():
 	get_tree().quit() # Quit the game
 
 # When "Settings" button is pressed:
-func _on_settings_pressed():
+func on_pressed():
 	if menuShown == false:
 		get_tree().paused = true
 		$Menu.visible = true

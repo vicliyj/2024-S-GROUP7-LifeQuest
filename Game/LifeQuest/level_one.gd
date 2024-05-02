@@ -7,7 +7,6 @@ extends Node2D
 @onready var postBattle = $PostBattle
 
 
-
 @onready var menu = $Menu
 var reference_size = Vector2(1.0 / 1151, 1.0 / 648)
 var isBattleOver = false
@@ -19,6 +18,7 @@ func _ready():
 	player.show()
 	enemy.show()
 	$UserInterface.show()
+	$InProgress.show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -40,6 +40,7 @@ func _process(delta):
 		await get_tree().create_timer(1.2).timeout
 		enemy.hide()
 		$UserInterface.hide()
+		$InProgress.hide()
 		postBattle.on_Victory() 
 
 		get_tree().paused = true
@@ -49,6 +50,7 @@ func _process(delta):
 		print("Player is dead.")
 		player.hide()
 		$UserInterface.hide()
+		$InProgress.hide()
 		postBattle.on_Defeat()
 		player.playerIsAlive = true
 		PlayerInventory.playerHealthStat = 20

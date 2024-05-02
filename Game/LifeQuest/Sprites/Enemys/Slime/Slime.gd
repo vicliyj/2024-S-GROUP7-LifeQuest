@@ -1,5 +1,5 @@
 extends Node2D
-var enemyHealthStat = 20 # Temporary health value. Pull value from where enemy character statistics are stored.
+var enemyHealthStat = 80 # Temporary health value. Pull value from where enemy character statistics are stored.
 var enemyAttackStat = 2 # Temporary attack value. Pull value from where enemy character statistics are stored.
 
 @onready var animate = $AnimationPlayer
